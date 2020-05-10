@@ -8,9 +8,9 @@
     <div class="Todo-main" v-if="todoList.length">
       <ul class="todo-list">
         <li v-for="(v,k) in todoList" :class="{completed: v.isCompleted}" :key='v.id'>
-          <input class="toggle" type="checkbox" v-model="v.isCompleted" @click="todoDone(k, v.id)">
-          <label @click="todoDone(k, v.id)">{{ v.content }}</label>
-          <button @click="removeTodo(k, v.id)" class="destroy"></button>
+          <input class="toggle" type="checkbox" v-model="v.isCompleted" @click="todoDone(k)">
+          <label @click="todoDone(k)">{{ v.content }}</label>
+          <button @click="removeTodo(k)" class="destroy"></button>
         </li>
       </ul>
     </div>
@@ -37,7 +37,7 @@ export default {
   name: 'Todo',
   data () {
     return {
-      title: 'TodoList',
+      title: '待办事项',
       todoList: [
         {id: 1, content: '一起给对方写信，然后读给对方听', isCompleted: true},
         {id: 2, content: '一起看书，分享自己喜欢的书籍', isCompleted: false},
@@ -60,13 +60,13 @@ export default {
         id = this.todoList[len - 1]['id'] + 1
       }
       let isCompleted = false
-      this.todoList.push({id, content, isCompleted})
+      this.todoList.unshift({id, content, isCompleted})
       ev.target.value = ''
     },
-    todoDone (ind, id) {
+    todoDone (ind) {
       this.todoList[ind].isCompleted = !this.todoList[ind].isCompleted
     },
-    removeTodo (ind, id) {
+    removeTodo (ind) {
       this.todoList.splice(ind, 1)
     }
   }
@@ -76,7 +76,9 @@ export default {
 <style lang='less' scoped>
 .Todo {
   background: #fff;
-  margin: 130px 0 40px 0;
+  margin: 130px auto 40px auto;
+  width: 50%;
+  min-width: 440px;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
               0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -103,7 +105,7 @@ export default {
 
   h1 {
     position: absolute;
-    top: -140px;
+    top: -160px;
     width: 100%;
     font-size: 80px;
     font-weight: 200;
@@ -121,6 +123,8 @@ export default {
     position: relative;
     z-index: 2;
     border-top: 1px solid #e6e6e6;
+    max-height: 330px;
+    overflow-y: auto;
     .todo-list {
       margin: 0;
       padding: 0;
@@ -172,6 +176,9 @@ export default {
       transition: color 0.4s;
       font-weight: 400;
       color: #4d4d4d;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
     }
 
     .todo-list li.completed label {
