@@ -95,8 +95,6 @@ export default {
     border: 1px solid #999;
     box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     padding: 16px 16px 16px 60px;
     border: none;
     background: rgba(0, 0, 0, 0.003);
@@ -111,22 +109,9 @@ export default {
     font-weight: 200;
     text-align: center;
     color: #b83f45;
-    -webkit-text-rendering: optimizeLegibility;
-    -moz-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
   }
-
   input::-webkit-input-placeholder {
-    font-style: italic;
-    font-weight: 300;
-    color: rgba(0, 0, 0, 0.4);
-  }
-  input::-moz-placeholder {
-    font-style: italic;
-    font-weight: 300;
-    color: rgba(0, 0, 0, 0.4);
-  }
-  input::input-placeholder {
     font-style: italic;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.4);
@@ -152,22 +137,6 @@ export default {
       border-bottom: none;
     }
 
-    .todo-list li.editing {
-      border-bottom: none;
-      padding: 0;
-    }
-
-    .todo-list li.editing .edit {
-      display: block;
-      width: calc(100% - 43px);
-      padding: 12px 16px;
-      margin: 0 0 0 43px;
-    }
-
-    .todo-list li.editing .view {
-      display: none;
-    }
-
     .todo-list li .toggle {
       text-align: center;
       width: 40px;
@@ -177,7 +146,6 @@ export default {
       bottom: 0;
       margin: auto 0;
       border: none;
-      -webkit-appearance: none;
       appearance: none;
     }
 
@@ -186,13 +154,14 @@ export default {
     }
 
     .todo-list li .toggle + label {
-      background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
+      background-image: url('../../assets/notCompleted.png');
+      background-size:40px 40px;
       background-repeat: no-repeat;
       background-position: center left;
     }
 
     .todo-list li .toggle:checked + label {
-      background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+      background-image: url('../../assets/completed.png');
     }
 
     .todo-list li label {
@@ -264,9 +233,6 @@ export default {
     text-align: left;
   }
 
-  .todo-count strong {
-    font-weight: 300;
-  }
   .filters {
     margin: 0;
     padding: 0;
