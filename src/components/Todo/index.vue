@@ -156,7 +156,7 @@ export default {
           white-space: nowrap;
           cursor: pointer;
         }
-        .completed {
+        &.completed label {
           color: #cdcdcd;
           text-decoration: line-through;
         }
