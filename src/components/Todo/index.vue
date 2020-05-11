@@ -219,4 +219,16 @@ export default {
     }
   }
 }
+@media (max-width: 430px) {
+  .Todo {
+    width: 100%;
+    min-width: 0;
+    .Todo-header h1 {
+      font-size: 66px;
+    }
+    label {
+      width:70%;
+    }
+  }
+}
 </style>
